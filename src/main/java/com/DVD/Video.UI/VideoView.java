@@ -14,12 +14,13 @@ public class VideoView {
         io.print("2. Remove DVD");
         io.print("3. Edit DVD");
         io.print("4. List DVD");
-        io.print("5. View DVD");
-        io.print("6. Search for DVD");
+        io.print("5. View DVD by ID");
+        io.print("6. View DVD by Title");
         io.print("7. Exit");
 
         return io.readInt("Please select from the above choices.", 1, 7);
     }
+    //adds video to system.
     public Video getNewVideoInfo() {
         String VideoId = io.readString("Please enter Video ID");
         String titleName = io.readString("Please enter DVD Title");
@@ -37,29 +38,70 @@ public class VideoView {
         currentVideo.setUserRating(userRating);
         return currentVideo;
     }
-    public void displayCreateVideoBanner() {
-        io.print("=== Create Video ===");
+    public void displayAddVideo() {
+        io.print("=== Add Video ===");
     }
-    public void displayCreateSuccessBanner() {
+    public void displayAddSuccess() {
         io.readString(
-                "Video successfully created.  Please hit enter to continue");
+                "Video successfully Added.  Please hit enter to continue");
     }
+
+    // removes DVD from System
+    public void displayRemoveVideo () {
+        io.print("=== Remove Video ===");
+    }
+    public void displayRemoveResult(Video videoRecord) {
+        if(videoRecord != null){
+            io.print("Video successfully removed.");
+        }else{
+            io.print("No such video exists.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
+
+    // displays all videos in a list
     public void displayVideoList(List<Video> videoList) {
         for (Video currentVideo : videoList) {
-            String videoInfo = String.format("#%s : %s %s %s %s %s %s",
+            String videoInfo = String.format("#%s : %s %s ",
                     currentVideo.getVideoId(),
                     currentVideo.getTitleName(),
-                    currentVideo.getReleaseDate(),
-                    currentVideo.getMPAARating(),
-                    currentVideo.getDirectorName(),
-                    currentVideo.getStudioName(),
-                    currentVideo.getUserRating());
+                    currentVideo.getReleaseDate());
+                    //currentVideo.getMPAARating(),
+                    //currentVideo.getDirectorName(),
+                    //currentVideo.getStudioName(),
+                    //currentVideo.getUserRating());
             io.print(videoInfo);
         }
 
         io.readString("Please hit enter to continue.");
     }
-    public void displayDisplayAllBanner() {
-        io.print("=== Display All Videos ===");
+    public void displayListAllVideos() {
+        io.print("=== List All Videos ===");
     }
+    // View selected video
+    public void displayViewVideo () {
+        io.print("=== View Video ===");
+    }
+    //public String getVideoNameChoice(){return io.readString("Please enter the Video Name.");}
+    public String getVideoIdChoice() {
+        return io.readString("Please enter the Video ID.");
+    }
+
+    public void displayVideo(Video video) {
+        if (video != null) {
+            //io.print(video.getVideoId());
+            io.print("DVD:" + video.getTitleName() + " :: Year:" + video.getReleaseDate() + " :: Rated: " +
+            video.getMPAARating() + " :: ");
+            io.print("Director: " + video.getDirectorName() + " :: Studio: " +
+            video.getStudioName() + " :: ");
+            io.print("Overall Review: " + video.getUserRating() + " :: ");
+            io.print("");
+        } else {
+            io.print("No such DVD exists.");
+        }
+        io.readString("Please hit enter to continue.");
+    }
+
+
+
 }

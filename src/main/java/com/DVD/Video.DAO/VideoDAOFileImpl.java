@@ -23,12 +23,13 @@ public class VideoDAOFileImpl implements VideoDAO {
 
     @Override
     public Video getVideo(String VideoId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return videos.get(VideoId);
     }
 
     @Override
     public Video removeVideo(String VideoId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Video removedVideo = videos.remove(VideoId);
+        return removedVideo;
     }
     private Map<String, Video> videos = new HashMap<>();
 }

@@ -36,7 +36,8 @@ public class VideoController {
                     //io.print("DVD Added");
                     break;
                 case 2:
-                    io.print("DVD Removed");
+                    removeVideo();
+                    //io.print("DVD Removed");
                     break;
                 case 3:
                     io.print("DVD Edited");
@@ -46,10 +47,11 @@ public class VideoController {
                     //io.print("DVDs Listed");
                     break;
                 case 5:
-                    io.print("DVD Details");
+                    viewVideo();
+                    //io.print("DVD Details");
                     break;
                 case 6:
-                    io.print("DVD Found");
+                    io.print("DVD Details");
                     break;
                 case 7:
                     keepGoing = false;
@@ -65,15 +67,30 @@ public class VideoController {
         return view.printMenuAndGetSelection();}
 
     private void createVideo() {
-        view.displayCreateVideoBanner();
+        view.displayAddVideo();
         Video newVideo = view.getNewVideoInfo();
         dao.addVideo(newVideo.getVideoId(), newVideo);
-        view.displayCreateSuccessBanner();
+        view.displayAddSuccess();
+    }
+
+    private void removeVideo() {
+        view.displayRemoveVideo();
+        String  VideoId = view.getVideoIdChoice();
+        Video removedVideo = dao.removeVideo(VideoId);
+        view.displayRemoveResult(removedVideo);
     }
 
     private void listVideos() {
-        view.displayDisplayAllBanner();
+        view.displayListAllVideos();
         List<Video> videoList = dao.getAllVideos();
         view.displayVideoList(videoList);
+    }
+
+    private void viewVideo() {
+        view.displayViewVideo();
+        String videoId = view.getVideoIdChoice();
+        //String videoName = view.getVideoNameChoice();
+        Video video = dao.getVideo(videoId);  //dao.getVideoName(videoName);
+        view.displayVideo(video);
     }
 }
