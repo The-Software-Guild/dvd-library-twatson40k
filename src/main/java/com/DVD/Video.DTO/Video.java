@@ -8,7 +8,7 @@ public class Video {
         private String directorName;
         private String studioName;
         private String userRating;
-
+        public Video (){}
         public Video(String VideoId) {
             this.VideoId = VideoId;
         }

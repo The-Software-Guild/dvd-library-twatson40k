@@ -13,28 +13,11 @@ public interface VideoDAO {
      * return null.
      *
      * @param VideoId id with which Video is to be associated
-     * @param //Video Video to be added to the roster
+     * @param //addVideo to be added to the roster
      * @return the Video object previously associated with the given  
      * Video id if it exists, null otherwise
      */
     Video addVideo(String VideoId, Video video);
-
-    /**
-     * Returns a List of all Videos in the roster.
-     *
-     * @return List containing all Videos in the roster.
-     */
-    List<Video> getAllVideos();
-
-    /**
-     * Returns the Video object associated with the given Video id.
-     * Returns null if no such Video exists
-     *
-     * @param VideoId ID of the Video to retrieve
-     * @return the Video object associated with the given Video id,  
-     * null if no such Video exists
-     */
-    Video getVideo(String VideoId);
 
     /**
      * Removes from the roster the Video associated with the given id.
@@ -46,4 +29,41 @@ public interface VideoDAO {
      * was associated with the given Video id
      */
     Video removeVideo(String VideoId);
+
+
+    /**
+     * edits a Video in the system.
+     *
+     * @return the edited Video back into the system.
+     */
+    Video editVideo(String VideoId, Video video);
+
+    /**
+     * Returns a List of all Videos in the system.
+     *
+     * @return List containing all Videos in the system.
+     */
+    List<Video> getAllVideos();
+
+    /**
+     * Returns the Video object associated with the given Video id.
+     * Returns null if no such Video exists
+     *
+     * @param VideoId ID of the Video to retrieve
+     * @return the Video object associated with the given Video id,  
+     * null if no such Video exists
+     */
+    Video getVideoId(String VideoId);
+
+    /**
+     * Returns the Video object associated with the given Video name.
+     * Returns null if no such Video exists
+     *
+     * @param titleName of the Video to retrieve
+     * @return the Video object associated with the given Video name,
+     * null if no such Video exists
+     */
+    Video getVideoName(String titleName);
+
+
 }

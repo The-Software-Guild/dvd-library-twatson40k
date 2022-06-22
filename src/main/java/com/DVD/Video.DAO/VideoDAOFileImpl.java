@@ -17,21 +17,42 @@ public class VideoDAOFileImpl implements VideoDAO {
     }
 
     @Override
-    public List<Video> getAllVideos() {
-        return new ArrayList<Video>(videos.values());
-    }
-
-    @Override
-    public Video getVideo(String VideoId) {
-        return videos.get(VideoId);
-    }
-
-    @Override
     public Video removeVideo(String VideoId) {
         Video removedVideo = videos.remove(VideoId);
         return removedVideo;
     }
-    private Map<String, Video> videos = new HashMap<>();
+
+    @Override
+    public Video editVideo(String VideoID, Video video){
+        Video editVideo = videos.put(VideoID, video);
+        return editVideo;
+    }
+
+    @Override
+    public List<Video> getAllVideos() {
+        return new ArrayList<>(videos.values());
+    }
+
+    @Override
+    public Video getVideoId(String VideoId) {
+        return videos.get(VideoId);
+    }
+
+    @Override
+    public Video getVideoName(String titleName){
+        Video retVid = new Video();
+        List<Video> videoList = getAllVideos();
+        for (Video tVid:videoList) {
+            if (tVid.getTitleName().equalsIgnoreCase(titleName)){
+                retVid = tVid;
+                break;
+            }
+        }
+        return retVid;
+    }
+
+
+    private final Map<String, Video> videos = new HashMap<>();
 }
 
 

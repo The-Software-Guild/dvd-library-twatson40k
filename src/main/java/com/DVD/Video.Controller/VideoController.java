@@ -1,6 +1,5 @@
 package com.DVD.Video.Controller;
 
-
 import com.DVD.Video.DAO.VideoDAO;
 import com.DVD.Video.DAO.VideoDAOFileImpl;
 import com.DVD.Video.DTO.Video;
@@ -12,27 +11,18 @@ import java.util.List;
 
 public class VideoController {
     private VideoDAO dao = new VideoDAOFileImpl();
-    private UserIO io = new UserIOConsoleImpl();
-    private VideoView view = new VideoView();
+    private final UserIO io = new UserIOConsoleImpl();
+    private final VideoView view = new VideoView();
     public void run() {
         boolean keepGoing = true;
-        int menuSelection = 0;
+        int menuSelection;
         while (keepGoing) {
-            io.print("Main Menu");
-            io.print("1. Add New DVD");
-            io.print("2. Remove DVD");
-            io.print("3. Edit DVD");
-            io.print("4. List DVD");
-            io.print("5. View DVD");
-            io.print("6. Search for DVD");
-            io.print("7. Exit");
 
-            menuSelection = io.readInt("Please select from the"
-                    + " above choices.", 1, 7);
+            menuSelection = getMenuSelection();
 
             switch (menuSelection) {
                 case 1:
-                    createVideo();
+                    addVideo();
                     //io.print("DVD Added");
                     break;
                 case 2:
@@ -40,35 +30,46 @@ public class VideoController {
                     //io.print("DVD Removed");
                     break;
                 case 3:
-                    io.print("DVD Edited");
+                    editVideo();
+                    //io.print("DVD Edited");
                     break;
                 case 4:
                     listVideos();
                     //io.print("DVDs Listed");
                     break;
                 case 5:
-                    viewVideo();
+                    viewVideoID();
                     //io.print("DVD Details");
                     break;
                 case 6:
-                    io.print("DVD Details");
+                    viewVideoName();
+                    //io.print("DVD Details");
                     break;
                 case 7:
                     keepGoing = false;
                     break;
                 default:
-                    io.print("UNKNOWN COMMAND");
+                    unknownCommand();
+                    //io.print("UNKNOWN COMMAND");
             }
 
         }
-        io.print("GOOD BYE");
+        exitMessage();
+        //io.print("GOOD BYE");
     }
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();}
 
-    private void createVideo() {
+    private void addVideo() {
         view.displayAddVideo();
         Video newVideo = view.getNewVideoInfo();
+        List<Video> videoList = dao.getAllVideos();
+        for (Video tVid:videoList) {
+            if (tVid.getVideoId().equalsIgnoreCase(newVideo.getVideoId())){
+                view.displayAlreadyExists();
+                return;
+            }
+        }
         dao.addVideo(newVideo.getVideoId(), newVideo);
         view.displayAddSuccess();
     }
@@ -80,17 +81,43 @@ public class VideoController {
         view.displayRemoveResult(removedVideo);
     }
 
+    private void editVideo(){
+        view.displayEditVideo();
+        String videoId = view.getVideoIdChoice();
+        Video video = dao.getVideoId(videoId);
+        view.displayID(video);
+        video = view.getEditVideoInfo(videoId);
+        dao.editVideo(video.getVideoId(), video);
+        view.displayEditSuccess();
+    }
+
     private void listVideos() {
         view.displayListAllVideos();
         List<Video> videoList = dao.getAllVideos();
         view.displayVideoList(videoList);
     }
 
-    private void viewVideo() {
+    private void viewVideoID() {
         view.displayViewVideo();
         String videoId = view.getVideoIdChoice();
-        //String videoName = view.getVideoNameChoice();
-        Video video = dao.getVideo(videoId);  //dao.getVideoName(videoName);
+        Video video = dao.getVideoId(videoId);
         view.displayVideo(video);
+    }
+
+    private void viewVideoName() {
+        view.displayViewVideo();
+        String titleName = view.getVideoNameChoice();
+        Video video = dao.getVideoName(titleName);
+        if (video.getVideoId() == null){
+            view.displayNotFound();
+        }else {
+        view.displayVideo(video);}
+    }
+
+    private void unknownCommand() {
+        view.displayUnknownCommand();
+    }
+    private void exitMessage() {
+        view.displayExit();
     }
 }
