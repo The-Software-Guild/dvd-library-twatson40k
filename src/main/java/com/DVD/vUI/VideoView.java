@@ -1,7 +1,7 @@
-package com.DVD.Video.UI;
+package com.DVD.vUI;
 
 
-import com.DVD.Video.DTO.Video;
+import com.DVD.vDTO.Video;
 
 import java.util.List;
 

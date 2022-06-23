@@ -1,4 +1,4 @@
-package com.DVD.Video.DTO;
+package com.DVD.vDTO;
 
 public class Video {
         private String VideoId;

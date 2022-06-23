@@ -1,6 +1,6 @@
-package com.DVD.Video.DAO;
+package com.DVD.vDAO;
 
-import com.DVD.Video.DTO.Video;
+import com.DVD.vDTO.Video;
 
 import java.util.List;
 

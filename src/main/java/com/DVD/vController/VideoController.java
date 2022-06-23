@@ -1,8 +1,8 @@
-package com.DVD.Video.Controller;
+package com.DVD.vController;
 
-import com.DVD.Video.DAO.VideoDAO;
-import com.DVD.Video.DTO.Video;
-import com.DVD.Video.UI.VideoView;
+import com.DVD.vDAO.VideoDAO;
+import com.DVD.vDTO.Video;
+import com.DVD.vUI.VideoView;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.DVD.Video.UI;
+package com.DVD.vUI;
 
 public interface UserIO {
         void print(String msg);
