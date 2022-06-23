@@ -1,15 +1,20 @@
 package com.DVD.Video.Controller;
 
 import com.DVD.Video.DAO.VideoDAO;
-import com.DVD.Video.DAO.VideoDAOFileImpl;
 import com.DVD.Video.DTO.Video;
 import com.DVD.Video.UI.VideoView;
 
 import java.util.List;
 
 public class VideoController {
-    private VideoDAO dao = new VideoDAOFileImpl();
-    private VideoView view = new VideoView();
+    private VideoDAO dao;
+    private VideoView view;
+
+    public VideoController(VideoDAO dao, VideoView view) {
+        this.dao = dao;
+        this.view = view;
+    }
+
     public void run() {
         boolean keepGoing = true;
         int menuSelection;

@@ -6,8 +6,11 @@ import com.DVD.Video.DTO.Video;
 import java.util.List;
 
 public class VideoView {
-    private UserIO io = new UserIOConsoleImpl();
+    private UserIO io;
 
+    public VideoView(UserIO io) {
+        this.io = io;
+    }
     public int printMenuAndGetSelection() {
         io.print("Main Menu");
         io.print("1. Add New DVD");

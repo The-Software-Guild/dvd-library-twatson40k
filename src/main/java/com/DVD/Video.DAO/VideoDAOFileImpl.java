@@ -11,20 +11,17 @@ public class VideoDAOFileImpl implements VideoDAO {
 
     @Override
     public Video addVideo(String VideoId, Video video) {
-        Video prevVideo = videos.put(VideoId, video);
-        return prevVideo;
+        return videos.put(VideoId, video);
     }
 
     @Override
     public Video removeVideo(String VideoId) {
-        Video removedVideo = videos.remove(VideoId);
-        return removedVideo;
+        return videos.remove(VideoId);
     }
 
     @Override
     public Video editVideo(String VideoID, Video video){
-        Video editVideo = videos.put(VideoID, video);
-        return editVideo;
+        return videos.put(VideoID, video);
     }
 
     @Override
