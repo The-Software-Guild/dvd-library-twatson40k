@@ -20,7 +20,7 @@ public class VideoView {
 
         return io.readInt("Please select from the above choices.", 1, 7);
     }
-    //adds video to system.
+    //adds video to system -----------------------------------------------------------------------------------
     public Video getNewVideoInfo() {
         String VideoId = io.readString("Please enter Video ID");
         String titleName = io.readString("Please enter DVD Title");
@@ -55,7 +55,7 @@ public class VideoView {
                 "Video Already Exists.  Please hit enter to continue");
     }
 
-    // removes DVD from System
+    // removes DVD from System --------------------------------------------------------------------------------
     public void displayRemoveVideo () {
         io.print("=== Remove Video ===");
     }
@@ -67,7 +67,7 @@ public class VideoView {
         }
         io.readString("Please hit enter to continue.");
     }
-    //Edits video from ID
+    //Edits video from ID -------------------------------------------------------------------------------------
     public Video getEditVideoInfo(String videoId) {
         String VideoId = videoId;
         String titleName = io.readString("Please enter DVD Title");
@@ -89,20 +89,18 @@ public class VideoView {
         io.print("=== Edit Video ===");
     }
     public void displayID(Video video){
-        if (video != null) {
             io.print("Video ID exist: ");
-            io.print("");
-        } else {
+    }
+    public void displayNoID(){
             io.print("No such DVD exists.");
             io.readString("Please hit enter to continue");
         }
-    }
     public void displayEditSuccess() {
         io.readString(
                 "Video successfully Edited.  Please hit enter to continue");
     }
 
-    // displays all videos in a list
+    // displays all videos in a list --------------------------------------------------------------------------
     public void displayVideoList(List<Video> videoList) {
         for (Video currentVideo : videoList) {
             String videoInfo = String.format("#%s : %s %s ",
@@ -122,7 +120,7 @@ public class VideoView {
         io.print("=== List All Videos ===");
     }
 
-    // View selected video by ID and Name
+    // View selected video by ID and Name --------------------------------------------------------------------
     public void displayViewVideo () {
         io.print("=== View Video ===");
     }
@@ -153,7 +151,7 @@ public class VideoView {
     }
 
 
-    // code displays exit and unknown commands messages
+    // code displays exit and unknown commands messages -------------------------------------------------------
     public void displayExit() {
         io.print("Good Bye!!!");
     }
