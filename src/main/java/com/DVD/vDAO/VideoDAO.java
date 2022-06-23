@@ -14,7 +14,7 @@ public interface VideoDAO {
      *
      * @param VideoId id with which Video is to be associated
      * @param video   //addVideo to be added to the roster
-     * @return
+     *                return
      */
     Video addVideo(String VideoId, Video video) throws VideoDAOException;
 
@@ -24,7 +24,7 @@ public interface VideoDAO {
      * there is no Video associated with the given id
      *
      * @param VideoId id of Video to be removed
-     * @return Video object that was removed or null if no Video
+     * return Video object that was removed or null if no Video
      * was associated with the given Video id
      */
     Video removeVideo(String VideoId) throws VideoDAOException;
@@ -32,8 +32,8 @@ public interface VideoDAO {
 
     /**
      * edits a Video in the system.
-     *
-     * @return
+     * <p>
+     * return
      */
     Video editVideo(String VideoId, Video video) throws VideoDAOException;
 

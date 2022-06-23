@@ -67,28 +67,37 @@ public class VideoDAOFileImpl implements VideoDAO {
         // videoAsText is expecting a line read in from our file.
 
         String[] videoTokens = videoAsText.split(DELIMITER);
+        int vtLength = videoTokens.length;
 
         // Given the pattern above, the video Id is in index 0 of the array.
         String videoId = videoTokens[0];
 
         Video videoFromFile = new Video(videoId);
-        // Index 1 - TitleName
-        videoFromFile.setTitleName(videoTokens[1]);
+        
+        if (vtLength >= 2) {
+            // Index 1 - TitleName
+            videoFromFile.setTitleName(videoTokens[1]);}
 
-        // Index 2 - ReleaseDate
-        videoFromFile.setReleaseDate(videoTokens[2]);
+        if (vtLength >= 3) {
+            // Index 2 - ReleaseDate
+            videoFromFile.setReleaseDate(videoTokens[2]);}
 
-        // Index 3 - MPAARating
-        videoFromFile.setMPAARating(videoTokens[3]);
+        if (vtLength >= 4) {
+            // Index 3 - MPAARating
+            videoFromFile.setMPAARating(videoTokens[3]);}
 
-        // Index 4 - DirectorName
-        videoFromFile.setDirectorName(videoTokens[4]);
+        if (vtLength >= 5) {
+            // Index 4 - DirectorName
+            videoFromFile.setDirectorName(videoTokens[4]);}
 
-        // Index 5 - StudioName
-        videoFromFile.setStudioName(videoTokens[5]);
+        if (vtLength >= 6) {
+            // Index 5 - StudioName
+            videoFromFile.setStudioName(videoTokens[5]);}
 
-        // Index 6 - UserRating
-        videoFromFile.setUserRating(videoTokens[6]);
+        if (vtLength >= 7) {
+            // Index 6 - UserRating
+            videoFromFile.setUserRating(videoTokens[6]);
+    }
 
         return videoFromFile;
     }
@@ -103,13 +112,13 @@ public class VideoDAOFileImpl implements VideoDAO {
                             new FileReader(DVD_FILE)));
         } catch (FileNotFoundException e) {
             throw new VideoDAOException(
-                    "-_- Could not load roster data into memory.", e);
+                    "-_- Could not load DVD data into memory.", e);
         }
         // currentLine holds the most recent line read from the file
         String currentLine;
         // currentVideo holds the most recent Video unmarshalled
         Video currentVideo;
-        // Go through ROSTER_FILE line by line, decoding each line into a
+        // Go through DVD_FILE line by line, decoding each line into a
         // Video object by calling the unmarshallVideo method.
         // Process while we have more lines in the file
         while (scanner.hasNextLine()) {

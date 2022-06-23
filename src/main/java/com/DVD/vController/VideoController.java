@@ -16,7 +16,7 @@ public class VideoController {
         this.view = view;
     }
 
-    public void run() throws VideoDAOException {
+    public void run() {
         boolean keepGoing = true;
         int menuSelection;
         try {
