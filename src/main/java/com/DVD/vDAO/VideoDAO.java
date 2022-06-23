@@ -14,8 +14,9 @@ public interface VideoDAO {
      *
      * @param VideoId id with which Video is to be associated
      * @param video   //addVideo to be added to the roster
+     * @return
      */
-    void addVideo(String VideoId, Video video);
+    Video addVideo(String VideoId, Video video) throws VideoDAOException;
 
     /**
      * Removes from the roster the Video associated with the given id.
@@ -26,20 +27,22 @@ public interface VideoDAO {
      * @return Video object that was removed or null if no Video
      * was associated with the given Video id
      */
-    Video removeVideo(String VideoId);
+    Video removeVideo(String VideoId) throws VideoDAOException;
 
 
     /**
      * edits a Video in the system.
+     *
+     * @return
      */
-    void editVideo(String VideoId, Video video);
+    Video editVideo(String VideoId, Video video) throws VideoDAOException;
 
     /**
      * Returns a List of all Videos in the system.
      *
      * @return List containing all Videos in the system.
      */
-    List<Video> getAllVideos();
+    List<Video> getAllVideos() throws VideoDAOException;
 
     /**
      * Returns the Video object associated with the given Video id.
@@ -49,7 +52,7 @@ public interface VideoDAO {
      * @return the Video object associated with the given Video id,  
      * null if no such Video exists
      */
-    Video getVideoId(String VideoId);
+    Video getVideoId(String VideoId) throws VideoDAOException;
 
     /**
      * Returns the Video object associated with the given Video name.
@@ -59,7 +62,7 @@ public interface VideoDAO {
      * @return the Video object associated with the given Video name,
      * null if no such Video exists
      */
-    Video getVideoName(String titleName);
+    Video getVideoName(String titleName) throws VideoDAOException;
 
 
 }

@@ -150,6 +150,10 @@ public class VideoView {
 
 
     // code displays exit and unknown commands messages -------------------------------------------------------
+    public void displayErrorMessage(String errorMsg) {
+        io.print("=== ERROR ===");
+        io.print(errorMsg);
+    }
     public void displayExit() {
         io.print("Good Bye!!!");
     }
