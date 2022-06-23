@@ -7,8 +7,8 @@ import com.DVD.vUI.VideoView;
 import java.util.List;
 
 public class VideoController {
-    private VideoDAO dao;
-    private VideoView view;
+    private final VideoDAO dao;
+    private final VideoView view;
 
     public VideoController(VideoDAO dao, VideoView view) {
         this.dao = dao;

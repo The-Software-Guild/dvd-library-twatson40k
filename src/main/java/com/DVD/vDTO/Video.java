@@ -19,7 +19,6 @@ public class Video {
             this.VideoId = VideoId;
         }
 
-
         public String getTitleName() {
             return titleName;
         }

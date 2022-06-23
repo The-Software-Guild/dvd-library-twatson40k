@@ -1,12 +1,11 @@
 package com.DVD.vUI;
 
-
 import com.DVD.vDTO.Video;
 
 import java.util.List;
 
 public class VideoView {
-    private UserIO io;
+    private final UserIO io;
 
     public VideoView(UserIO io) {
         this.io = io;
@@ -33,6 +32,7 @@ public class VideoView {
         String studioName = io.readString("Please enter Studio Name");
         String userRating = io.readString("Please enter User Rating");
         Video currentVideo = new Video(VideoId);
+        currentVideo.setVideoId(VideoId);
         currentVideo.setTitleName(titleName);
         currentVideo.setReleaseDate(releaseDate);
         currentVideo.setMPAARating(mpaaRating);
@@ -48,10 +48,6 @@ public class VideoView {
     public void displayAddSuccess() {
         io.readString(
                 "Video successfully Added.  Please hit enter to continue");
-    }
-    public void displayAddFailure() {
-        io.readString(
-                "Video Not Successfully Added.  Please hit enter to continue");
     }
     public void displayAlreadyExists() {
         io.readString(
@@ -72,14 +68,13 @@ public class VideoView {
     }
     //Edits video from ID -------------------------------------------------------------------------------------
     public Video getEditVideoInfo(String videoId) {
-        String VideoId = videoId;
         String titleName = io.readString("Please enter DVD Title");
         String releaseDate = io.readString("Please enter Release Date");
         String mpaaRating = io.readString("Please enter MPAA Rating");
         String directorName = io.readString("Please enter Director's Name");
         String studioName = io.readString("Please enter Studio Name");
         String userRating = io.readString("Please enter User Rating");
-        Video currentVideo = new Video(VideoId);
+        Video currentVideo = new Video(videoId);
         currentVideo.setTitleName(titleName);
         currentVideo.setReleaseDate(releaseDate);
         currentVideo.setMPAARating(mpaaRating);
@@ -91,7 +86,7 @@ public class VideoView {
     public void displayEditVideo() {
         io.print("=== Edit Video ===");
     }
-    public void displayID(Video video){
+    public void displayID(Video ignoredVideo){
             io.print("Video ID exist: ");
     }
     public void displayNoID(){

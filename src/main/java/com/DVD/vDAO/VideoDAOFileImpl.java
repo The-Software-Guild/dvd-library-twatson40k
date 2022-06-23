@@ -10,8 +10,8 @@ import java.util.Map;
 public class VideoDAOFileImpl implements VideoDAO {
 
     @Override
-    public Video addVideo(String VideoId, Video video) {
-        return videos.put(VideoId, video);
+    public void addVideo(String VideoId, Video video) {
+        videos.put(VideoId, video);
     }
 
     @Override
@@ -20,8 +20,8 @@ public class VideoDAOFileImpl implements VideoDAO {
     }
 
     @Override
-    public Video editVideo(String VideoID, Video video){
-        return videos.put(VideoID, video);
+    public void editVideo(String VideoID, Video video){
+        videos.put(VideoID, video);
     }
 
     @Override

@@ -13,11 +13,9 @@ public interface VideoDAO {
      * return null.
      *
      * @param VideoId id with which Video is to be associated
-     * @param //addVideo to be added to the roster
-     * @return the Video object previously associated with the given  
-     * Video id if it exists, null otherwise
+     * @param video   //addVideo to be added to the roster
      */
-    Video addVideo(String VideoId, Video video);
+    void addVideo(String VideoId, Video video);
 
     /**
      * Removes from the roster the Video associated with the given id.
@@ -33,10 +31,8 @@ public interface VideoDAO {
 
     /**
      * edits a Video in the system.
-     *
-     * @return the edited Video back into the system.
      */
-    Video editVideo(String VideoId, Video video);
+    void editVideo(String VideoId, Video video);
 
     /**
      * Returns a List of all Videos in the system.
