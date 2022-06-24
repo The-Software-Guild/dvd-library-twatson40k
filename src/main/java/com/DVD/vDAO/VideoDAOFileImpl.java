@@ -138,7 +138,6 @@ public class VideoDAOFileImpl implements VideoDAO {
     private String marshallVideo(Video aVideo){
 
         String videoAsText = aVideo.getVideoId() + DELIMITER;
-
         // Title
         videoAsText  += aVideo.getTitleName() + DELIMITER;
         // Release date
